@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="http://www.atlasestateagents.co.uk/css/tether.min.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/main.css">
+
+</head>
+
+<body>
+    <h1 align='center'>Robot Visualizer</h1>
+    <div class="container" id='canvasContainer' align='center' style="background-image: url('img/courses/singleI.png'); width: 810px; height: 396px;">
+        <canvas width='810' height='396' id='canvas' align='center'>
+            Your browser does not support html5 canvas - go get Chrome!
+        </canvas>
+        <!--canvas width='810' height='396' id='trackCanvas' align='center'>
+            Your browser does not support html5 canvas - go get Chrome!
+        </canvas-->
+    </div>
+    <br>
+    <div class="container thumbnail" style="background-color: lightgray">
+        <h3 align='center'>Pose Message</h3>
+        <p id='pose'>
+            {
+            <br> x: xval,
+            <br> y: yval
+            <br> }
+        </p>
+    </div>
+
+
+
+
+
+
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="http://cdn.robotwebtools.org/EventEmitter2/current/eventemitter2.min.js"></script>
+    <script type="text/javascript" src="http://cdn.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
+    <script src="http://www.atlasestateagents.co.uk/javascript/tether.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src='js/animate.js'></script>
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
