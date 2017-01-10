@@ -47,7 +47,7 @@ function drawRotated(robot) { //rotates and translates the robot image according
     context.clearRect(0, 0, canvas.width, canvas.height);
     context.save();
     context.translate(bot.x + translate.x, bot.y + translate.y);
-    context.rotate(robot.ang * Math.PI / 180);
+    context.rotate(robot.ang )// * Math.PI / 180);
     context.drawImage(image, -robot.img.width / 2, -robot.img.height / 2, robot.img.width, robot.img.height);
     //context.drawImage(robot.img.obj, robot.x, robot.y, robot.img.width, robot.img.height);
     context.restore();

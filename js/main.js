@@ -1,4 +1,4 @@
-var poseTopic = '/poses'
+var poseTopic = '/zenith/pose2D'
 
 function main() {
     var ros = initRos();
@@ -25,7 +25,10 @@ function showPose(pose) {
     str += ' meters, <br>';
     str += 'y: ';
     str += Math.round(pose.y * 1000) / 1000;
-    str += 'meters <br> }';
+    str += ' meters, <br>';
+    str += 'theta: ';
+    str += Math.round(pose.theta * 1000) / 1000;
+    str += ' radians <br> }';
     $('#pose')[0].innerHTML = str;
 
 }
