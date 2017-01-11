@@ -38,7 +38,7 @@ function map(x, in_min, in_max, out_min, out_max) { //function used from arduino
 
 function movebot(x, y, ang) { //meters,meters,degrees
     bot.x = map(x, -3, 15, -125, 620); //maps meters to pixels
-    bot.y = map(y, -1.5, 1.5, -125, 125);
+    bot.y = map(y, -1.5, 1.5, 125, -125); //+x is right +y is down
     bot.ang = ang;
 }
 
