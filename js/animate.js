@@ -53,8 +53,35 @@ function drawRotated(robot) { //rotates and translates the robot image according
     context.restore();
 }
 
+function drawObs(x, y, type){
+    if(type == "static"){
+       color = "yellow";
+    }else if(type == "moving"){
+       color = "red";
+    }else if(type == "unkown"){
+       color = "gray";
+    }else{
+       color = "black";
+    }
+    context.save();
+    context.translate(translate.x, translate.y);
+    context.beginPath();
+    sx = map(x, -3, 15, -125, 620); //maps meters to pixels
+    sy = map(y, -1.5, 1.5, 125, -125); //+x is right +y is down
+    context.arc(sx, sy, 10, 0, 2 * Math.PI);
+    context.fillStyle = color;
+    context.fill();
+    context.restore();
+}
+
 var animate = function () { //function that loops itself every milisecond. It erases the area around the bot and redraws an updated position
     context.clearRect((bot.x + translate.x) - bot.img.width / 2, (bot.y + translate.y) - bot.img.height / 2, bot.img.width, bot.img.height);
     drawRotated(bot);
+    for (var i in obsList) {
+    console.log(obsList[i]);
+    drawObs(roboPose.x + Math.cos(roboPose.theta)*obsList[i].x - Math.sin(roboPose.theta)*obsList[i].y,
+	     roboPose.y - Math.sin(roboPose.theta)*obsList[i].x + Math.cos(roboPose.theta)*obsList[i].y,
+  	     obsList[i].type);
+    }
     setTimeout(animate, 1);
 }

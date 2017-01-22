@@ -1,4 +1,7 @@
-var poseTopic = '/zenith/pose2D'
+var poseTopic = '/zenith/pose2D';
+var obsTopic = '/zenith/obstacles';
+var roboPose;
+var obsList;
 
 function main() {
     var ros = initRos();
@@ -12,7 +15,24 @@ function main() {
     pose.subscribe(function (message) {
         console.log('Received message on ' + pose.name + ': ' + message.data);
         showPose(message);
+        roboPose = message;
         movebot(message.x, message.y, message.theta);
+        //pose.unsubscribe();
+    });
+
+    var obs = new ROSLIB.Topic({
+        ros: ros,
+        name: obsTopic,
+        messageType: 'zenith_obstacle_detector/ObstacleList'
+    });
+
+    obs.subscribe(function (message) {
+        console.log('Received message on ' + obs.name + ': ' + message.data);
+        obsList = message.obstacles;
+
+
+        //showPose(message);
+        //movebot(message.x, message.y, message.theta);
         //pose.unsubscribe();
     });
 
@@ -35,7 +55,7 @@ function showPose(pose) {
 
 function initRos() {
     var ros = new ROSLIB.Ros({
-        url: 'ws://localhost:9090'
+        url: 'ws://'+location.hostname+':9090'
     });
     ros.on('connection', function () {
         console.log('Connected to websocket server.');
