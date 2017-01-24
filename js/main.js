@@ -9,6 +9,7 @@ function main() {
     var pose = new ROSLIB.Topic({
         ros: ros,
         name: poseTopic,
+	queue_size: 1,
         messageType: 'geometry_msgs/Pose2D'
     });
 
@@ -23,6 +24,7 @@ function main() {
     var obs = new ROSLIB.Topic({
         ros: ros,
         name: obsTopic,
+	queue_size: 1,
         messageType: 'zenith_obstacle_detector/ObstacleList'
     });
 
